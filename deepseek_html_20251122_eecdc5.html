@@ -1,0 +1,2308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHAYA - Premium Capes & Jackets</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #2c3e50;
+            --secondary: #e74c3c;
+            --accent: #3498db;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --text: #333;
+            --text-light: #777;
+            --success: #2ecc71;
+            --warning: #f39c12;
+            --danger: #e74c3c;
+        }
+
+        body {
+            color: var(--text);
+            background-color: #f9f9f9;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #c0392b;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--secondary);
+            color: white;
+        }
+
+        .btn-success {
+            background-color: var(--success);
+        }
+
+        .btn-success:hover {
+            background-color: #27ae60;
+        }
+
+        .btn-warning {
+            background-color: var(--warning);
+        }
+
+        .btn-warning:hover {
+            background-color: #e67e22;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+            color: var(--primary);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary);
+        }
+
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        nav ul {
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--secondary);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+        }
+
+        .cart-icon {
+            position: relative;
+            margin-right: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--secondary);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.8rem;
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1556906781-2a0a24366619?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 150px 0;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        /* Categories Section */
+        .categories {
+            background-color: white;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .category-card {
+            position: relative;
+            height: 300px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .category-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .category-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .category-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+        }
+
+        .category-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        /* Products Section */
+        .products {
+            background-color: var(--light);
+        }
+
+        .product-filter {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            margin: 0 10px;
+            background: none;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            color: var(--text-light);
+            transition: color 0.3s;
+        }
+
+        .filter-btn.active {
+            color: var(--secondary);
+            border-bottom: 2px solid var(--secondary);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-img {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-img img {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .product-price {
+            font-size: 1.1rem;
+            color: var(--secondary);
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .product-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* About Section */
+        .about {
+            background-color: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-img {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--text-light);
+        }
+
+        /* Payment Section */
+        .payment {
+            background-color: var(--light);
+            text-align: center;
+        }
+
+        .payment-methods {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .payment-method {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            width: 200px;
+            transition: transform 0.3s ease;
+        }
+
+        .payment-method:hover {
+            transform: translateY(-5px);
+        }
+
+        .payment-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary);
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: #bbb;
+            transition: color 0.3s;
+        }
+
+        .footer-column ul li a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bbb;
+        }
+
+        /* Cart Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 30px;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+        }
+
+        .close-modal:hover {
+            color: var(--danger);
+        }
+
+        .cart-items {
+            margin: 20px 0;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-item-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .cart-item-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .cart-item-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cart-item-details h4 {
+            margin-bottom: 5px;
+        }
+
+        .cart-item-price {
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 1px solid #ddd;
+            background: none;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .quantity-btn:hover {
+            background-color: #f5f5f5;
+        }
+
+        .cart-item-remove {
+            color: var(--danger);
+            cursor: pointer;
+        }
+
+        .cart-total {
+            text-align: right;
+            margin: 20px 0;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .checkout-form {
+            margin-top: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .payment-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .payment-option {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .payment-option:hover {
+            border-color: var(--accent);
+        }
+
+        .payment-option.selected {
+            border-color: var(--secondary);
+            background-color: rgba(231, 76, 60, 0.05);
+        }
+
+        /* Admin Panel */
+        .admin-panel {
+            display: none;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-top: 30px;
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .admin-tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .admin-tab {
+            padding: 12px 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .admin-tab.active {
+            color: var(--secondary);
+            border-bottom: 2px solid var(--secondary);
+        }
+
+        .admin-content {
+            display: none;
+        }
+
+        .admin-content.active {
+            display: block;
+        }
+
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .admin-table th, .admin-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .admin-table th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+        }
+
+        .admin-table tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .status-pending {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+
+        .status-completed {
+            background-color: #d1ecf1;
+            color: #0c5460;
+        }
+
+        .status-shipped {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .status-cancelled {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        /* Login Form */
+        .login-form {
+            max-width: 400px;
+            margin: 50px auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-form h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--primary);
+        }
+
+        /* Telegram Instructions */
+        .telegram-instructions {
+            background: #e8f4fd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .telegram-status {
+            background: #f8f9fa;
+            border-radius: 5px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-img {
+                order: 2;
+            }
+            
+            .about-text {
+                order: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-wrap: wrap;
+            }
+            
+            nav {
+                width: 100%;
+                order: 3;
+                margin-top: 20px;
+                display: none;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .cart-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .cart-item-actions {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">CHA<span>YA</span></div>
+            
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#" id="admin-link">Admin</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <div class="cart-icon" id="cart-icon">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count">0</span>
+                </div>
+                <div class="mobile-menu" id="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Elegant Capes & Stylish Jackets</h1>
+            <p>Discover our premium collection of capes and jackets, crafted with attention to detail and designed for the modern individual.</p>
+            <a href="#products" class="btn">Shop Now</a>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories">
+        <div class="container">
+            <h2 class="section-title">Our Collections</h2>
+            <div class="category-grid">
+                <div class="category-card">
+                    <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Capes Collection">
+                    <div class="category-content">
+                        <h3>Elegant Capes</h3>
+                        <p>Discover our range of sophisticated capes</p>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Jackets Collection">
+                    <div class="category-content">
+                        <h3>Stylish Jackets</h3>
+                        <p>Explore our premium jacket collection</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="container">
+            <h2 class="section-title">Featured Products</h2>
+            
+            <div class="product-filter">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="cape">Capes</button>
+                <button class="filter-btn" data-filter="jacket">Jackets</button>
+            </div>
+            
+            <div class="product-grid" id="product-grid">
+                <!-- Products will be dynamically loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="About CHAYA">
+                </div>
+                <div class="about-text">
+                    <h2>About CHAYA</h2>
+                    <p>CHAYA is a premium fashion brand specializing in elegant capes and stylish jackets. Our mission is to provide high-quality, fashionable outerwear that combines comfort, style, and durability.</p>
+                    <p>Each piece in our collection is carefully designed and crafted to ensure our customers receive products that not only look great but also stand the test of time.</p>
+                    <p>We believe in sustainable fashion and ethical manufacturing practices, ensuring that our products are not only beautiful but also responsibly made.</p>
+                    <a href="#contact" class="btn">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment Section -->
+    <section class="payment">
+        <div class="container">
+            <h2 class="section-title">Payment Methods</h2>
+            <p>We offer multiple secure payment options for your convenience</p>
+            
+            <div class="payment-methods">
+                <div class="payment-method">
+                    <div class="payment-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Bkash</h3>
+                    <p>Fast and secure mobile payments</p>
+                </div>
+                
+                <div class="payment-method">
+                    <div class="payment-icon">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <h3>Nagad</h3>
+                    <p>Convenient digital wallet</p>
+                </div>
+                
+                <div class="payment-method">
+                    <div class="payment-icon">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <h3>Cash on Delivery</h3>
+                    <p>Pay when you receive your order</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>CHAYA</h3>
+                    <p>Premium capes and jackets for the modern individual. Quality, style, and comfort in every piece.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Customer Service</h3>
+                    <ul>
+                        <li><a href="#">Shipping Policy</a></li>
+                        <li><a href="#">Return Policy</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                        <li><a href="#">FAQs</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Fashion Street, Dhaka, Bangladesh</li>
+                        <li><i class="fas fa-phone"></i> +880 1234-567890</li>
+                        <li><i class="fas fa-envelope"></i> info@chayabrand.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 CHAYA. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div class="modal" id="cart-modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-cart">&times;</span>
+            <h2>Your Shopping Cart</h2>
+            
+            <div class="cart-items" id="cart-items">
+                <!-- Cart items will be dynamically loaded here -->
+            </div>
+            
+            <div class="cart-total">
+                Total: ৳ <span id="cart-total">0</span>
+            </div>
+            
+            <button class="btn" id="checkout-btn">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal" id="checkout-modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-checkout">&times;</span>
+            <h2>Checkout</h2>
+            
+            <form class="checkout-form" id="checkout-form">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="address">Shipping Address</label>
+                    <textarea id="address" class="form-control" rows="3" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Select Payment Method</label>
+                    <div class="payment-options">
+                        <div class="payment-option" data-method="bkash">
+                            <i class="fas fa-mobile-alt"></i>
+                            <h4>Bkash</h4>
+                            <p>Mobile Payment</p>
+                        </div>
+                        <div class="payment-option" data-method="nagad">
+                            <i class="fas fa-wallet"></i>
+                            <h4>Nagad</h4>
+                            <p>Digital Wallet</p>
+                        </div>
+                        <div class="payment-option" data-method="cod">
+                            <i class="fas fa-money-bill-wave"></i>
+                            <h4>Cash on Delivery</h4>
+                            <p>Pay on Delivery</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group" id="payment-details">
+                    <!-- Payment details will be shown based on selection -->
+                </div>
+                
+                <button type="submit" class="btn" id="place-order-btn">Place Order</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Login -->
+    <div class="modal" id="admin-login-modal">
+        <div class="login-form">
+            <h2>Admin Login</h2>
+            <form id="admin-login-form">
+                <div class="form-group">
+                    <label for="admin-username">Username</label>
+                    <input type="text" id="admin-username" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="admin-password">Password</label>
+                    <input type="password" id="admin-password" class="form-control" required>
+                </div>
+                
+                <button type="submit" class="btn">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Panel -->
+    <section class="admin-panel" id="admin-panel">
+        <div class="container">
+            <div class="admin-header">
+                <h2>Admin Dashboard</h2>
+                <button class="btn btn-outline" id="logout-btn">Logout</button>
+            </div>
+            
+            <div class="admin-tabs">
+                <div class="admin-tab active" data-tab="products">Products</div>
+                <div class="admin-tab" data-tab="orders">Orders</div>
+                <div class="admin-tab" data-tab="customers">Customers</div>
+                <div class="admin-tab" data-tab="telegram">Telegram Settings</div>
+            </div>
+            
+            <!-- Products Tab -->
+            <div class="admin-content active" id="products-tab">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <h3>Product Management</h3>
+                    <button class="btn" id="add-product-btn">Add New Product</button>
+                </div>
+                
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Price</th>
+                            <th>Stock</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-products-table">
+                        <!-- Products will be dynamically loaded here -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Orders Tab -->
+            <div class="admin-content" id="orders-tab">
+                <h3>Order Management</h3>
+                
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Customer</th>
+                            <th>Date</th>
+                            <th>Amount</th>
+                            <th>Payment</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-orders-table">
+                        <!-- Orders will be dynamically loaded here -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Customers Tab -->
+            <div class="admin-content" id="customers-tab">
+                <h3>Customer Management</h3>
+                
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Orders</th>
+                            <th>Total Spent</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-customers-table">
+                        <!-- Customers will be dynamically loaded here -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Telegram Settings Tab -->
+            <div class="admin-content" id="telegram-tab">
+                <h3>📱 Telegram Notification Settings</h3>
+                
+                <div id="telegram-notification"></div>
+                
+                <div class="form-group">
+                    <label for="bot-token">Bot Token</label>
+                    <input type="text" id="bot-token" class="form-control" value="8261180290:AAEf_0YKA-hLj1VAc2eN_W5zetVw2jmCN0M" readonly>
+                    <small>এই টোকেনটি অটোমেটিকভাবে সেট করা হয়েছে</small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="chat-id">Your Chat ID</label>
+                    <input type="text" id="chat-id" class="form-control" placeholder="Chat ID অটোমেটিকভাবে লোড হবে">
+                </div>
+                
+                <button class="btn" id="get-chat-id">Get My Chat ID</button>
+                <button class="btn btn-outline" id="test-telegram">Test Notification</button>
+                
+                <div class="telegram-status">
+                    <h4>বর্তমান স্ট্যাটাস:</h4>
+                    <p id="telegram-status-text">লোড হচ্ছে...</p>
+                </div>
+                
+                <div class="telegram-instructions">
+                    <h4>📋 Setup Instructions:</h4>
+                    <ol>
+                        <li><strong>বটে মেসেজ পাঠান:</strong> Telegram এ <a href="https://t.me/ChayaOrderBot" target="_blank">@ChayaOrderBot</a> এ একটি মেসেজ পাঠান</li>
+                        <li><strong>Chat ID পাওয়া:</strong> উপরের "Get My Chat ID" বাটনে ক্লিক করুন</li>
+                        <li><strong>টেস্ট করুন:</strong> "Test Notification" বাটনে ক্লিক করে টেস্ট করুন</li>
+                        <li><strong>রেডি!</strong> এখন থেকে সব নতুন অর্ডার টেলিগ্রামে নোটিফিকেশন যাবে</li>
+                    </ol>
+                    
+                    <p><strong>Direct Link:</strong> 
+                        <a href="https://t.me/ChayaOrderBot" target="_blank">https://t.me/ChayaOrderBot</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add/Edit Product Modal -->
+    <div class="modal" id="product-modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-product-modal">&times;</span>
+            <h2 id="product-modal-title">Add New Product</h2>
+            
+            <form id="product-form">
+                <input type="hidden" id="product-id">
+                
+                <div class="form-group">
+                    <label for="product-name">Product Name</label>
+                    <input type="text" id="product-name" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="product-category">Category</label>
+                    <select id="product-category" class="form-control" required>
+                        <option value="">Select Category</option>
+                        <option value="cape">Cape</option>
+                        <option value="jacket">Jacket</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="product-price">Price (৳)</label>
+                    <input type="number" id="product-price" class="form-control" min="0" step="0.01" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="product-stock">Stock Quantity</label>
+                    <input type="number" id="product-stock" class="form-control" min="0" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="product-description">Description</label>
+                    <textarea id="product-description" class="form-control" rows="4"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="product-image">Image URL</label>
+                    <input type="text" id="product-image" class="form-control" required>
+                </div>
+                
+                <button type="submit" class="btn" id="save-product-btn">Save Product</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Database Simulation (using localStorage)
+        const Database = {
+            // Initialize database with sample data if empty
+            init: function() {
+                if (!localStorage.getItem('chaya_products')) {
+                    const products = [
+                        {
+                            id: 1,
+                            name: "Classic Wool Cape",
+                            category: "cape",
+                            price: 3499,
+                            stock: 15,
+                            description: "Elegant wool cape perfect for formal occasions.",
+                            image: "https://images.unsplash.com/photo-1582142306909-195724d1a6ee?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                        },
+                        {
+                            id: 2,
+                            name: "Leather Biker Jacket",
+                            category: "jacket",
+                            price: 5999,
+                            stock: 10,
+                            description: "Premium leather jacket with a classic biker style.",
+                            image: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                        },
+                        {
+                            id: 3,
+                            name: "Evening Velvet Cape",
+                            category: "cape",
+                            price: 4299,
+                            stock: 8,
+                            description: "Luxurious velvet cape for evening events.",
+                            image: "https://images.unsplash.com/photo-1582418702059-97ebafb35d09?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                        },
+                        {
+                            id: 4,
+                            name: "Classic Denim Jacket",
+                            category: "jacket",
+                            price: 2999,
+                            stock: 20,
+                            description: "Timeless denim jacket for casual wear.",
+                            image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                        }
+                    ];
+                    localStorage.setItem('chaya_products', JSON.stringify(products));
+                }
+                
+                if (!localStorage.getItem('chaya_orders')) {
+                    localStorage.setItem('chaya_orders', JSON.stringify([]));
+                }
+                
+                if (!localStorage.getItem('chaya_customers')) {
+                    localStorage.setItem('chaya_customers', JSON.stringify([]));
+                }
+                
+                if (!localStorage.getItem('chaya_admin')) {
+                    const admin = {
+                        username: "admin",
+                        password: "admin123"
+                    };
+                    localStorage.setItem('chaya_admin', JSON.stringify(admin));
+                }
+            },
+            
+            // Products
+            getProducts: function() {
+                return JSON.parse(localStorage.getItem('chaya_products') || '[]');
+            },
+            
+            saveProducts: function(products) {
+                localStorage.setItem('chaya_products', JSON.stringify(products));
+            },
+            
+            // Orders
+            getOrders: function() {
+                return JSON.parse(localStorage.getItem('chaya_orders') || '[]');
+            },
+            
+            saveOrders: function(orders) {
+                localStorage.setItem('chaya_orders', JSON.stringify(orders));
+            },
+            
+            // Customers
+            getCustomers: function() {
+                return JSON.parse(localStorage.getItem('chaya_customers') || '[]');
+            },
+            
+            saveCustomers: function(customers) {
+                localStorage.setItem('chaya_customers', JSON.stringify(customers));
+            },
+            
+            // Admin
+            getAdmin: function() {
+                return JSON.parse(localStorage.getItem('chaya_admin') || '{}');
+            }
+        };
+
+        // Telegram Integration
+        const TelegramBot = {
+            botToken: '8261180290:AAEf_0YKA-hLj1VAc2eN_W5zetVw2jmCN0M',
+            chatId: '',
+            
+            init: function() {
+                // চ্যাট আইডি localStorage থেকে লোড করুন
+                const savedChatId = localStorage.getItem('telegram_chat_id');
+                
+                if (savedChatId) this.chatId = savedChatId;
+                
+                console.log('Telegram Bot Initialized with Token:', this.botToken);
+            },
+            
+            setChatId: function(chatId) {
+                this.chatId = chatId;
+                localStorage.setItem('telegram_chat_id', chatId);
+                console.log('Chat ID set:', chatId);
+            },
+            
+            sendMessage: function(message) {
+                if (!this.botToken) {
+                    console.error('Telegram bot token not set');
+                    return false;
+                }
+                
+                if (!this.chatId) {
+                    console.error('Telegram chat ID not set');
+                    // চ্যাট আইডি সেট না থাকলে ইউজারকে ইনস্ট্রাকশন দেখান
+                    this.showChatIdInstructions();
+                    return false;
+                }
+                
+                const url = `https://api.telegram.org/bot${this.botToken}/sendMessage`;
+                
+                return fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        chat_id: this.chatId,
+                        text: message,
+                        parse_mode: 'HTML'
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.ok) {
+                        console.log('Message sent to Telegram successfully');
+                        return true;
+                    } else {
+                        console.error('Error sending message to Telegram:', data);
+                        // যদি চ্যাট আইডি ভুল হয়
+                        if (data.error_code === 400) {
+                            this.showChatIdInstructions();
+                        }
+                        return false;
+                    }
+                })
+                .catch(error => {
+                    console.error('Error sending message to Telegram:', error);
+                    return false;
+                });
+            },
+            
+            sendOrderNotification: function(order) {
+                const itemsList = order.items.map(item => 
+                    `  - ${item.name} (${item.quantity} x ৳${item.price})`
+                ).join('\n');
+                
+                const message = `
+🛍️ <b>নতুন অর্ডার!</b>
+
+<b>অর্ডার আইডি:</b> #${order.id}
+<b>গ্রাহকের নাম:</b> ${order.customer.name}
+<b>ইমেইল:</b> ${order.customer.email}
+<b>ফোন:</b> ${order.customer.phone}
+<b>ঠিকানা:</b> ${order.customer.address}
+
+<b>পণ্য সমূহ:</b>
+${itemsList}
+
+<b>মোট Amount:</b> ৳${order.total}
+<b>পেমেন্ট Method:</b> ${order.payment.method.toUpperCase()}
+<b>স্ট্যাটাস:</b> ${order.status}
+<b>তারিখ:</b> ${new Date(order.date).toLocaleString('bn-BD')}
+                `.trim();
+                
+                return this.sendMessage(message);
+            },
+            
+            showChatIdInstructions: function() {
+                const instruction = `
+⚠️ <b>Telegram Chat ID সেটআপ প্রয়োজন!</b>
+
+আপনার Telegram Chat ID সেটআপ করতে:
+1. এই বটে একটি মেসেজ পাঠান: @ChayaOrderBot
+2. তারপর Admin Panel > Telegram Settings এ গিয়ে
+3. "Get My Chat ID" বাটনে ক্লিক করুন
+4. অটোমেটিকভাবে আপনার Chat ID সেট হয়ে যাবে
+                `;
+                
+                // Admin panel এ notification show করা
+                if (document.getElementById('telegram-notification')) {
+                    document.getElementById('telegram-notification').innerHTML = `
+                        <div style="background: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px; margin: 10px 0;">
+                            <strong>Telegram Setup Required:</strong> ${instruction}
+                        </div>
+                    `;
+                }
+                
+                console.warn(instruction);
+            },
+            
+            getChatId: function() {
+                const url = `https://api.telegram.org/bot${this.botToken}/getUpdates`;
+                
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.ok && data.result.length > 0) {
+                            const latestMessage = data.result[data.result.length - 1];
+                            const chatId = latestMessage.message.chat.id;
+                            this.setChatId(chatId);
+                            
+                            // UI update
+                            if (document.getElementById('chat-id')) {
+                                document.getElementById('chat-id').value = chatId;
+                            }
+                            
+                            Cart.showMessage(`Chat ID found and set: ${chatId}`, 'success');
+                            
+                            // Test message send
+                            this.sendMessage('✅ CHAYA Bot connected successfully! আপনি এখন অর্ডার নোটিফিকেশন পাবেন।');
+                        } else {
+                            Cart.showMessage('কোন মেসেজ পাওয়া যায়নি। বটে প্রথমে একটি মেসেজ পাঠান।', 'error');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error getting chat ID:', error);
+                        Cart.showMessage('Chat ID পাওয়া যায়নি। ইন্টারনেট সংযোগ চেক করুন।', 'error');
+                    });
+            }
+        };
+
+        // Shopping Cart
+        const Cart = {
+            items: [],
+            
+            init: function() {
+                // Load cart from localStorage if exists
+                const savedCart = localStorage.getItem('chaya_cart');
+                if (savedCart) {
+                    this.items = JSON.parse(savedCart);
+                    this.updateCartUI();
+                }
+            },
+            
+            addItem: function(product, quantity = 1) {
+                const existingItem = this.items.find(item => item.id === product.id);
+                
+                if (existingItem) {
+                    existingItem.quantity += quantity;
+                } else {
+                    this.items.push({
+                        id: product.id,
+                        name: product.name,
+                        price: product.price,
+                        image: product.image,
+                        quantity: quantity
+                    });
+                }
+                
+                this.save();
+                this.updateCartUI();
+                
+                // Show success message
+                this.showMessage(`${product.name} added to cart!`, 'success');
+            },
+            
+            removeItem: function(productId) {
+                this.items = this.items.filter(item => item.id !== productId);
+                this.save();
+                this.updateCartUI();
+            },
+            
+            updateQuantity: function(productId, quantity) {
+                const item = this.items.find(item => item.id === productId);
+                if (item) {
+                    if (quantity <= 0) {
+                        this.removeItem(productId);
+                    } else {
+                        item.quantity = quantity;
+                        this.save();
+                        this.updateCartUI();
+                    }
+                }
+            },
+            
+            getTotal: function() {
+                return this.items.reduce((total, item) => total + (item.price * item.quantity), 0);
+            },
+            
+            getItemCount: function() {
+                return this.items.reduce((count, item) => count + item.quantity, 0);
+            },
+            
+            save: function() {
+                localStorage.setItem('chaya_cart', JSON.stringify(this.items));
+            },
+            
+            updateCartUI: function() {
+                // Update cart count
+                document.querySelector('.cart-count').textContent = this.getItemCount();
+                
+                // Update cart items in modal
+                const cartItemsContainer = document.getElementById('cart-items');
+                const cartTotalElement = document.getElementById('cart-total');
+                
+                if (this.items.length === 0) {
+                    cartItemsContainer.innerHTML = '<p>Your cart is empty</p>';
+                    cartTotalElement.textContent = '0';
+                    return;
+                }
+                
+                let cartHTML = '';
+                this.items.forEach(item => {
+                    cartHTML += `
+                        <div class="cart-item">
+                            <div class="cart-item-info">
+                                <div class="cart-item-img">
+                                    <img src="${item.image}" alt="${item.name}">
+                                </div>
+                                <div class="cart-item-details">
+                                    <h4>${item.name}</h4>
+                                    <div class="cart-item-price">৳ ${item.price}</div>
+                                </div>
+                            </div>
+                            <div class="cart-item-actions">
+                                <div class="cart-item-quantity">
+                                    <button class="quantity-btn" data-id="${item.id}" data-action="decrease">-</button>
+                                    <span>${item.quantity}</span>
+                                    <button class="quantity-btn" data-id="${item.id}" data-action="increase">+</button>
+                                </div>
+                                <div class="cart-item-remove" data-id="${item.id}">
+                                    <i class="fas fa-trash"></i>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                cartItemsContainer.innerHTML = cartHTML;
+                cartTotalElement.textContent = this.getTotal();
+                
+                // Add event listeners to quantity buttons and remove buttons
+                document.querySelectorAll('.quantity-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const productId = parseInt(e.target.closest('.quantity-btn').dataset.id);
+                        const action = e.target.closest('.quantity-btn').dataset.action;
+                        
+                        if (action === 'increase') {
+                            this.updateQuantity(productId, this.items.find(item => item.id === productId).quantity + 1);
+                        } else if (action === 'decrease') {
+                            this.updateQuantity(productId, this.items.find(item => item.id === productId).quantity - 1);
+                        }
+                    });
+                });
+                
+                document.querySelectorAll('.cart-item-remove').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const productId = parseInt(e.target.closest('.cart-item-remove').dataset.id);
+                        this.removeItem(productId);
+                    });
+                });
+            },
+            
+            clear: function() {
+                this.items = [];
+                this.save();
+                this.updateCartUI();
+            },
+            
+            showMessage: function(message, type = 'info') {
+                // Create notification element
+                const notification = document.createElement('div');
+                notification.className = `notification ${type}`;
+                notification.textContent = message;
+                notification.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    padding: 15px 20px;
+                    background-color: ${type === 'success' ? '#2ecc71' : '#e74c3c'};
+                    color: white;
+                    border-radius: 4px;
+                    z-index: 3000;
+                    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                `;
+                
+                document.body.appendChild(notification);
+                
+                // Remove after 3 seconds
+                setTimeout(() => {
+                    notification.remove();
+                }, 3000);
+            }
+        };
+
+        // E-commerce Application
+        const App = {
+            currentUser: null,
+            isAdmin: false,
+            
+            init: function() {
+                // Initialize database
+                Database.init();
+                
+                // Initialize cart
+                Cart.init();
+                
+                // Initialize Telegram bot
+                TelegramBot.init();
+                
+                // Load products
+                this.loadProducts();
+                
+                // Set up event listeners
+                this.setupEventListeners();
+                
+                // Check if admin is logged in
+                this.checkAdminStatus();
+            },
+            
+            loadProducts: function() {
+                const products = Database.getProducts();
+                const productGrid = document.getElementById('product-grid');
+                
+                let productHTML = '';
+                products.forEach(product => {
+                    productHTML += `
+                        <div class="product-card" data-category="${product.category}">
+                            <div class="product-img">
+                                <img src="${product.image}" alt="${product.name}">
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-title">${product.name}</h3>
+                                <p class="product-price">৳ ${product.price}</p>
+                                <div class="product-actions">
+                                    <button class="btn" data-id="${product.id}">Add to Cart</button>
+                                    <button class="btn btn-outline" data-id="${product.id}" data-action="details">View Details</button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                productGrid.innerHTML = productHTML;
+                
+                // Add event listeners to product buttons
+                document.querySelectorAll('.product-actions .btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const productId = parseInt(e.target.dataset.id);
+                        const action = e.target.dataset.action;
+                        
+                        const product = products.find(p => p.id === productId);
+                        
+                        if (action === 'details') {
+                            // Show product details (could be implemented as a modal)
+                            alert(`${product.name}\n\n${product.description}\n\nPrice: ৳${product.price}\nStock: ${product.stock}`);
+                        } else {
+                            Cart.addItem(product);
+                        }
+                    });
+                });
+            },
+            
+            setupEventListeners: function() {
+                // Mobile menu toggle
+                document.getElementById('mobile-menu').addEventListener('click', () => {
+                    document.getElementById('main-nav').classList.toggle('active');
+                });
+                
+                // Product filter
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        // Remove active class from all buttons
+                        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                        // Add active class to clicked button
+                        e.target.classList.add('active');
+                        
+                        const filter = e.target.dataset.filter;
+                        const productCards = document.querySelectorAll('.product-card');
+                        
+                        productCards.forEach(card => {
+                            if (filter === 'all' || card.dataset.category === filter) {
+                                card.style.display = 'block';
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        });
+                    });
+                });
+                
+                // Cart icon click
+                document.getElementById('cart-icon').addEventListener('click', () => {
+                    document.getElementById('cart-modal').style.display = 'flex';
+                });
+                
+                // Close cart modal
+                document.getElementById('close-cart').addEventListener('click', () => {
+                    document.getElementById('cart-modal').style.display = 'none';
+                });
+                
+                // Checkout button
+                document.getElementById('checkout-btn').addEventListener('click', () => {
+                    if (Cart.items.length === 0) {
+                        Cart.showMessage('Your cart is empty!', 'error');
+                        return;
+                    }
+                    
+                    document.getElementById('cart-modal').style.display = 'none';
+                    document.getElementById('checkout-modal').style.display = 'flex';
+                });
+                
+                // Close checkout modal
+                document.getElementById('close-checkout').addEventListener('click', () => {
+                    document.getElementById('checkout-modal').style.display = 'none';
+                });
+                
+                // Payment method selection
+                document.querySelectorAll('.payment-option').forEach(option => {
+                    option.addEventListener('click', (e) => {
+                        // Remove selected class from all options
+                        document.querySelectorAll('.payment-option').forEach(o => o.classList.remove('selected'));
+                        // Add selected class to clicked option
+                        e.currentTarget.classList.add('selected');
+                        
+                        const method = e.currentTarget.dataset.method;
+                        this.showPaymentDetails(method);
+                    });
+                });
+                
+                // Checkout form submission
+                document.getElementById('checkout-form').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    this.processOrder();
+                });
+                
+                // Admin link
+                document.getElementById('admin-link').addEventListener('click', (e) => {
+                    e.preventDefault();
+                    
+                    if (this.isAdmin) {
+                        document.getElementById('admin-panel').style.display = 'block';
+                        this.loadAdminData();
+                    } else {
+                        document.getElementById('admin-login-modal').style.display = 'flex';
+                    }
+                });
+                
+                // Admin login form
+                document.getElementById('admin-login-form').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    this.adminLogin();
+                });
+                
+                // Admin tabs
+                document.querySelectorAll('.admin-tab').forEach(tab => {
+                    tab.addEventListener('click', (e) => {
+                        // Remove active class from all tabs
+                        document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+                        // Add active class to clicked tab
+                        e.target.classList.add('active');
+                        
+                        // Hide all content
+                        document.querySelectorAll('.admin-content').forEach(content => {
+                            content.classList.remove('active');
+                        });
+                        
+                        // Show selected content
+                        const tabId = e.target.dataset.tab + '-tab';
+                        document.getElementById(tabId).classList.add('active');
+                        
+                        // যদি Telegram tab এ যান, তাহলে settings লোড করুন
+                        if (e.target.dataset.tab === 'telegram') {
+                            this.loadTelegramSettings();
+                        }
+                    });
+                });
+                
+                // Logout button
+                document.getElementById('logout-btn').addEventListener('click', () => {
+                    this.adminLogout();
+                });
+                
+                // Add product button
+                document.getElementById('add-product-btn').addEventListener('click', () => {
+                    this.openProductModal();
+                });
+                
+                // Close product modal
+                document.getElementById('close-product-modal').addEventListener('click', () => {
+                    document.getElementById('product-modal').style.display = 'none';
+                });
+                
+                // Product form submission
+                document.getElementById('product-form').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    this.saveProduct();
+                });
+                
+                // Get Chat ID button
+                document.getElementById('get-chat-id').addEventListener('click', () => {
+                    TelegramBot.getChatId();
+                });
+                
+                // Test Telegram notification
+                document.getElementById('test-telegram').addEventListener('click', () => {
+                    const testOrder = {
+                        id: 'TEST-' + Date.now(),
+                        customer: {
+                            name: 'Test Customer',
+                            email: 'test@example.com',
+                            phone: '0123456789',
+                            address: 'Test Address, Dhaka'
+                        },
+                        items: [
+                            { name: 'Test Product 1', quantity: 2, price: 1500 },
+                            { name: 'Test Product 2', quantity: 1, price: 2999 }
+                        ],
+                        total: 5999,
+                        payment: { method: 'bkash' },
+                        status: 'paid',
+                        date: new Date().toISOString()
+                    };
+                    
+                    TelegramBot.sendOrderNotification(testOrder)
+                        .then(success => {
+                            if (success) {
+                                Cart.showMessage('✅ টেস্ট নোটিফিকেশন সফলভাবে পাঠানো হয়েছে!', 'success');
+                            } else {
+                                Cart.showMessage('❌ টেস্ট নোটিফিকেশন পাঠানো যায়নি। Chat ID চেক করুন।', 'error');
+                            }
+                        });
+                });
+            },
+            
+            showPaymentDetails: function(method) {
+                const paymentDetails = document.getElementById('payment-details');
+                
+                let html = '';
+                if (method === 'bkash') {
+                    html = `
+                        <div class="form-group">
+                            <label for="bkash-number">Bkash Number</label>
+                            <input type="text" id="bkash-number" class="form-control" placeholder="01XXXXXXXXX" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="bkash-transaction">Transaction ID</label>
+                            <input type="text" id="bkash-transaction" class="form-control" placeholder="Enter transaction ID" required>
+                        </div>
+                        <p><small>Please send the amount to 01XXXXXXXXX and enter the transaction ID above.</small></p>
+                    `;
+                } else if (method === 'nagad') {
+                    html = `
+                        <div class="form-group">
+                            <label for="nagad-number">Nagad Number</label>
+                            <input type="text" id="nagad-number" class="form-control" placeholder="01XXXXXXXXX" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="nagad-transaction">Transaction ID</label>
+                            <input type="text" id="nagad-transaction" class="form-control" placeholder="Enter transaction ID" required>
+                        </div>
+                        <p><small>Please send the amount to 01XXXXXXXXX and enter the transaction ID above.</small></p>
+                    `;
+                } else if (method === 'cod') {
+                    html = `
+                        <p><strong>Cash on Delivery</strong></p>
+                        <p>You will pay when you receive your order. Please have the exact amount ready.</p>
+                    `;
+                }
+                
+                paymentDetails.innerHTML = html;
+            },
+            
+            processOrder: function() {
+                // Get form data
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const phone = document.getElementById('phone').value;
+                const address = document.getElementById('address').value;
+                
+                // Get selected payment method
+                const selectedPayment = document.querySelector('.payment-option.selected');
+                if (!selectedPayment) {
+                    Cart.showMessage('Please select a payment method', 'error');
+                    return;
+                }
+                
+                const paymentMethod = selectedPayment.dataset.method;
+                let paymentDetails = {};
+                
+                if (paymentMethod === 'bkash') {
+                    paymentDetails = {
+                        number: document.getElementById('bkash-number').value,
+                        transaction: document.getElementById('bkash-transaction').value
+                    };
+                } else if (paymentMethod === 'nagad') {
+                    paymentDetails = {
+                        number: document.getElementById('nagad-number').value,
+                        transaction: document.getElementById('nagad-transaction').value
+                    };
+                }
+                
+                // Create order
+                const order = {
+                    id: Date.now(), // Simple ID generation
+                    customer: { name, email, phone, address },
+                    items: Cart.items,
+                    total: Cart.getTotal(),
+                    payment: {
+                        method: paymentMethod,
+                        details: paymentDetails
+                    },
+                    status: paymentMethod === 'cod' ? 'pending' : 'paid',
+                    date: new Date().toISOString()
+                };
+                
+                // Save order
+                const orders = Database.getOrders();
+                orders.push(order);
+                Database.saveOrders(orders);
+                
+                // Save customer if new
+                const customers = Database.getCustomers();
+                const existingCustomer = customers.find(c => c.email === email);
+                
+                if (!existingCustomer) {
+                    customers.push({
+                        id: Date.now(),
+                        name,
+                        email,
+                        phone,
+                        orders: 1,
+                        totalSpent: order.total
+                    });
+                } else {
+                    existingCustomer.orders += 1;
+                    existingCustomer.totalSpent += order.total;
+                }
+                
+                Database.saveCustomers(customers);
+                
+                // Update product stock
+                const products = Database.getProducts();
+                Cart.items.forEach(cartItem => {
+                    const product = products.find(p => p.id === cartItem.id);
+                    if (product) {
+                        product.stock -= cartItem.quantity;
+                    }
+                });
+                Database.saveProducts(products);
+                
+                // ✅ টেলিগ্রামে নোটিফিকেশন পাঠান
+                TelegramBot.sendOrderNotification(order);
+                
+                // Clear cart
+                Cart.clear();
+                
+                // Close modal and show success message
+                document.getElementById('checkout-modal').style.display = 'none';
+                Cart.showMessage('Order placed successfully!', 'success');
+                
+                // Reset form
+                document.getElementById('checkout-form').reset();
+                document.getElementById('payment-details').innerHTML = '';
+                document.querySelectorAll('.payment-option').forEach(o => o.classList.remove('selected'));
+                
+                // Reload products to update stock
+                this.loadProducts();
+            },
+            
+            checkAdminStatus: function() {
+                // In a real app, this would check for an authentication token
+                this.isAdmin = localStorage.getItem('chaya_admin_loggedin') === 'true';
+            },
+            
+            adminLogin: function() {
+                const username = document.getElementById('admin-username').value;
+                const password = document.getElementById('admin-password').value;
+                
+                const admin = Database.getAdmin();
+                
+                if (username === admin.username && password === admin.password) {
+                    this.isAdmin = true;
+                    localStorage.setItem('chaya_admin_loggedin', 'true');
+                    document.getElementById('admin-login-modal').style.display = 'none';
+                    document.getElementById('admin-panel').style.display = 'block';
+                    this.loadAdminData();
+                    Cart.showMessage('Admin login successful!', 'success');
+                } else {
+                    Cart.showMessage('Invalid username or password', 'error');
+                }
+            },
+            
+            adminLogout: function() {
+                this.isAdmin = false;
+                localStorage.removeItem('chaya_admin_loggedin');
+                document.getElementById('admin-panel').style.display = 'none';
+                Cart.showMessage('Admin logged out', 'info');
+            },
+            
+            loadAdminData: function() {
+                this.loadAdminProducts();
+                this.loadAdminOrders();
+                this.loadAdminCustomers();
+                this.loadTelegramSettings();
+            },
+            
+            loadAdminProducts: function() {
+                const products = Database.getProducts();
+                const tableBody = document.getElementById('admin-products-table');
+                
+                let html = '';
+                products.forEach(product => {
+                    html += `
+                        <tr>
+                            <td>${product.id}</td>
+                            <td><img src="${product.image}" alt="${product.name}" style="width: 50px; height: 50px; object-fit: cover;"></td>
+                            <td>${product.name}</td>
+                            <td>${product.category}</td>
+                            <td>৳ ${product.price}</td>
+                            <td>${product.stock}</td>
+                            <td>
+                                <button class="btn btn-warning" data-id="${product.id}" data-action="edit">Edit</button>
+                                <button class="btn btn-outline" data-id="${product.id}" data-action="delete">Delete</button>
+                            </td>
+                        </tr>
+                    `;
+                });
+                
+                tableBody.innerHTML = html;
+                
+                // Add event listeners to product actions
+                document.querySelectorAll('#admin-products-table button').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const productId = parseInt(e.target.dataset.id);
+                        const action = e.target.dataset.action;
+                        
+                        if (action === 'edit') {
+                            this.editProduct(productId);
+                        } else if (action === 'delete') {
+                            this.deleteProduct(productId);
+                        }
+                    });
+                });
+            },
+            
+            loadAdminOrders: function() {
+                const orders = Database.getOrders();
+                const tableBody = document.getElementById('admin-orders-table');
+                
+                let html = '';
+                orders.forEach(order => {
+                    const statusClass = `status-${order.status}`;
+                    const statusText = order.status.charAt(0).toUpperCase() + order.status.slice(1);
+                    
+                    html += `
+                        <tr>
+                            <td>#${order.id}</td>
+                            <td>${order.customer.name}</td>
+                            <td>${new Date(order.date).toLocaleDateString()}</td>
+                            <td>৳ ${order.total}</td>
+                            <td>${order.payment.method.toUpperCase()}</td>
+                            <td><span class="status-badge ${statusClass}">${statusText}</span></td>
+                            <td>
+                                <button class="btn btn-outline" data-id="${order.id}" data-action="view">View</button>
+                                <button class="btn btn-warning" data-id="${order.id}" data-action="update">Update Status</button>
+                            </td>
+                        </tr>
+                    `;
+                });
+                
+                tableBody.innerHTML = html;
+            },
+            
+            loadAdminCustomers: function() {
+                const customers = Database.getCustomers();
+                const tableBody = document.getElementById('admin-customers-table');
+                
+                let html = '';
+                customers.forEach(customer => {
+                    html += `
+                        <tr>
+                            <td>${customer.id}</td>
+                            <td>${customer.name}</td>
+                            <td>${customer.email}</td>
+                            <td>${customer.phone}</td>
+                            <td>${customer.orders}</td>
+                            <td>৳ ${customer.totalSpent}</td>
+                        </tr>
+                    `;
+                });
+                
+                tableBody.innerHTML = html;
+            },
+            
+            loadTelegramSettings: function() {
+                document.getElementById('chat-id').value = TelegramBot.chatId || '';
+                
+                // Status update
+                const statusText = document.getElementById('telegram-status-text');
+                if (TelegramBot.chatId) {
+                    statusText.innerHTML = '<span style="color: green;">✅ Connected</span><br>Chat ID: ' + TelegramBot.chatId;
+                } else {
+                    statusText.innerHTML = '<span style="color: red;">❌ Not Connected</span><br>Chat ID সেটআপ প্রয়োজন';
+                }
+            },
+            
+            openProductModal: function(product = null) {
+                const modal = document.getElementById('product-modal');
+                const title = document.getElementById('product-modal-title');
+                const form = document.getElementById('product-form');
+                
+                if (product) {
+                    // Edit mode
+                    title.textContent = 'Edit Product';
+                    document.getElementById('product-id').value = product.id;
+                    document.getElementById('product-name').value = product.name;
+                    document.getElementById('product-category').value = product.category;
+                    document.getElementById('product-price').value = product.price;
+                    document.getElementById('product-stock').value = product.stock;
+                    document.getElementById('product-description').value = product.description;
+                    document.getElementById('product-image').value = product.image;
+                } else {
+                    // Add mode
+                    title.textContent = 'Add New Product';
+                    form.reset();
+                    document.getElementById('product-id').value = '';
+                }
+                
+                modal.style.display = 'flex';
+            },
+            
+            editProduct: function(productId) {
+                const products = Database.getProducts();
+                const product = products.find(p => p.id === productId);
+                
+                if (product) {
+                    this.openProductModal(product);
+                }
+            },
+            
+            deleteProduct: function(productId) {
+                if (confirm('Are you sure you want to delete this product?')) {
+                    const products = Database.getProducts();
+                    const updatedProducts = products.filter(p => p.id !== productId);
+                    
+                    Database.saveProducts(updatedProducts);
+                    this.loadAdminProducts();
+                    this.loadProducts(); // Update customer view
+                    
+                    Cart.showMessage('Product deleted successfully', 'success');
+                }
+            },
+            
+            saveProduct: function() {
+                const id = document.getElementById('product-id').value;
+                const name = document.getElementById('product-name').value;
+                const category = document.getElementById('product-category').value;
+                const price = parseFloat(document.getElementById('product-price').value);
+                const stock = parseInt(document.getElementById('product-stock').value);
+                const description = document.getElementById('product-description').value;
+                const image = document.getElementById('product-image').value;
+                
+                const products = Database.getProducts();
+                
+                if (id) {
+                    // Update existing product
+                    const index = products.findIndex(p => p.id === parseInt(id));
+                    if (index !== -1) {
+                        products[index] = {
+                            ...products[index],
+                            name,
+                            category,
+                            price,
+                            stock,
+                            description,
+                            image
+                        };
+                    }
+                } else {
+                    // Add new product
+                    const newId = products.length > 0 ? Math.max(...products.map(p => p.id)) + 1 : 1;
+                    products.push({
+                        id: newId,
+                        name,
+                        category,
+                        price,
+                        stock,
+                        description,
+                        image
+                    });
+                }
+                
+                Database.saveProducts(products);
+                document.getElementById('product-modal').style.display = 'none';
+                
+                this.loadAdminProducts();
+                this.loadProducts(); // Update customer view
+                
+                Cart.showMessage(`Product ${id ? 'updated' : 'added'} successfully`, 'success');
+            }
+        };
+
+        // Initialize the application when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            App.init();
+        });
+    </script>
+</body>
+</html>
